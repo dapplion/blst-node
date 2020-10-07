@@ -4,7 +4,17 @@
       "target_name": "blst_wrap",
       "sources": [ "blst_wrap.cpp" ],
       "cflags_cc!": [ "-fno-exceptions" ],
+      "msvs_settings": {
+        "VCCLCompilerTool": {
+          "ExceptionHandling": 1
+        }
+      },
       "conditions": [
+        ["OS=='win'", {
+          "cflags": [
+            "/EHsc"
+          ]
+        }],
          ["OS == 'mac'", {
           "OTHER_CPLUSPLUSFLAGS" : [ "-std=c++11", "-stdlib=libc++" ],
           "OTHER_LDFLAGS": [ "-stdlib=libc++" ],

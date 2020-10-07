@@ -14,5 +14,8 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{matrix.node}}
+      - name: Install windows build tools
+        if: contains(matrix.os, 'windows')
+        run: npm install --global windows-build-tools
       - name: Install & Build
         run: npm install
